@@ -245,9 +245,9 @@ export default function ApiDocsPage() {
       <Header />
       <div className="mx-auto p-6 max-w-6xl">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">API Documentation</h1>
+          <h1 className="text-4xl font-bold mb-2">FreeTable API Documentation</h1>
           <p className="text-muted-foreground">
-            FreeTable REST API endpoints for restaurant booking management
+            Complete REST API reference for restaurant booking management
           </p>
         </div>
 

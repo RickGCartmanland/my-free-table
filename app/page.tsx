@@ -219,6 +219,12 @@ export default function Home() {
     <>
       <Header />
       <div className="mx-auto p-6 max-w-6xl">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold mb-2">Find Your Perfect Table</h1>
+          <p className="text-muted-foreground text-lg">
+            Discover amazing restaurants and book your next dining experience
+          </p>
+        </div>
         <div className="grid md:grid-cols-2 gap-6">
         {/* Restaurants List */}
         <div className="space-y-4">
@@ -425,7 +431,7 @@ export default function Home() {
                     </div>
                   )}
 
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full cursor-pointer">
                     Confirm Booking
                   </Button>
                 </form>
