@@ -98,6 +98,145 @@ const apiEndpoints = [
       ],
     },
   },
+  {
+    method: "GET",
+    path: "/api/bookings/:id",
+    description: "Get single booking details",
+    sampleResponse: {
+      booking: {
+        id: 1,
+        restaurant: { name: "The Italian Corner", cuisine: "Italian" },
+        table: { tableNumber: "T1", capacity: 4 },
+        customer: { name: "John Doe", email: "john@example.com" },
+        bookingDate: "2025-10-15",
+        bookingTime: "19:00",
+        partySize: 4,
+        specialRequests: "Window table preferred",
+        status: "confirmed",
+        createdAt: "2025-10-04T12:00:00Z",
+      },
+    },
+  },
+  {
+    method: "PUT",
+    path: "/api/bookings/:id",
+    description: "Update booking details",
+    sampleRequest: {
+      customerName: "John Smith",
+      customerEmail: "johnsmith@example.com",
+      bookingDate: "2025-10-16",
+      bookingTime: "20:00",
+      partySize: 6,
+      specialRequests: "Birthday celebration",
+      tableId: 2,
+    },
+    sampleResponse: {
+      booking: {
+        id: 1,
+        restaurantId: 1,
+        tableId: 2,
+        customerId: 1,
+        bookingDate: "2025-10-16",
+        bookingTime: "20:00",
+        partySize: 6,
+        specialRequests: "Birthday celebration",
+        status: "confirmed",
+        createdAt: "2025-10-04T12:00:00Z",
+      },
+    },
+  },
+  {
+    method: "DELETE",
+    path: "/api/bookings/:id",
+    description: "Cancel a booking",
+    sampleResponse: {
+      booking: {
+        id: 1,
+        restaurantId: 1,
+        tableId: 1,
+        customerId: 1,
+        bookingDate: "2025-10-15",
+        bookingTime: "19:00",
+        partySize: 4,
+        specialRequests: "Window table preferred",
+        status: "cancelled",
+        createdAt: "2025-10-04T12:00:00Z",
+      },
+      message: "Booking cancelled successfully",
+    },
+  },
+  {
+    method: "PATCH",
+    path: "/api/bookings/:id/status",
+    description: "Update booking status",
+    sampleRequest: {
+      status: "completed",
+    },
+    sampleResponse: {
+      booking: {
+        id: 1,
+        status: "completed",
+      },
+      message: "Booking status updated to completed",
+    },
+  },
+  {
+    method: "GET",
+    path: "/api/bookings/search",
+    description: "Search bookings with filters",
+    queryParams: "?restaurantId=1&status=confirmed&dateFrom=2025-10-01&limit=50",
+    sampleResponse: {
+      bookings: [
+        {
+          id: 1,
+          restaurant: { name: "The Italian Corner" },
+          customer: { name: "John Doe", email: "john@example.com" },
+          bookingDate: "2025-10-15",
+          bookingTime: "19:00",
+          status: "confirmed",
+        },
+      ],
+      total: 1,
+      limit: 50,
+      offset: 0,
+      hasMore: false,
+    },
+  },
+  {
+    method: "PATCH",
+    path: "/api/bookings/bulk",
+    description: "Bulk update booking statuses",
+    sampleRequest: {
+      bookingIds: [1, 2, 3],
+      status: "completed",
+    },
+    sampleResponse: {
+      message: "Successfully updated 3 bookings",
+      updatedCount: 3,
+      bookings: [
+        { id: 1, status: "completed" },
+        { id: 2, status: "completed" },
+        { id: 3, status: "completed" },
+      ],
+    },
+  },
+  {
+    method: "DELETE",
+    path: "/api/bookings/bulk",
+    description: "Bulk cancel bookings",
+    sampleRequest: {
+      bookingIds: [1, 2, 3],
+    },
+    sampleResponse: {
+      message: "Successfully cancelled 3 bookings",
+      cancelledCount: 3,
+      bookings: [
+        { id: 1, status: "cancelled" },
+        { id: 2, status: "cancelled" },
+        { id: 3, status: "cancelled" },
+      ],
+    },
+  },
 ];
 
 export default function ApiDocsPage() {
